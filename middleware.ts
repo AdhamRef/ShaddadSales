@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith("/api/")) {
     return NextResponse.next()
   }
-
+//asd
   if (!token) {
     if (pathname === "/login" || pathname === "/register") {
       return NextResponse.next()
