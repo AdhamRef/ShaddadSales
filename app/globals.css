@@ -1,0 +1,140 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color palette with purple, teal, and light blue theme */
+  --background: #F0F3FF;
+  --foreground: #2A1E91;
+  --card: #FFFFFF;
+  --card-foreground: #2A1E91;
+  --popover: #FFFFFF;
+  --popover-foreground: #2A1E91;
+  --primary: #2A1E91;
+  --primary-foreground: #F0F3FF;
+  --secondary: #9716BD;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E8E8F0;
+  --muted-foreground: #6B5B95;
+  --accent: #0ABF9E;
+  --accent-foreground: #FFFFFF;
+  --accent-purple: #9716BD;
+  --accent-teal: #0ABF9E;
+  --accent-light-blue: #A6C8FF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8E8F0;
+  --input: #FFFFFF;
+  --input-border: #D4D4E0;
+  --ring: #2A1E91;
+  --chart-1: #2A1E91;
+  --chart-2: #9716BD;
+  --chart-3: #0ABF9E;
+  --chart-4: #A6C8FF;
+  --chart-5: #F0F3FF;
+  --radius: 0.75rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #2A1E91;
+  --sidebar-primary: #2A1E91;
+  --sidebar-primary-foreground: #F0F3FF;
+  --sidebar-accent: #9716BD;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #E8E8F0;
+  --sidebar-ring: #2A1E91;
+}
+
+.dark {
+  --background: #1A1425;
+  --foreground: #F0F3FF;
+  --card: #2D2540;
+  --card-foreground: #F0F3FF;
+  --popover: #2D2540;
+  --popover-foreground: #F0F3FF;
+  --primary: #A6C8FF;
+  --primary-foreground: #1A1425;
+  --secondary: #9716BD;
+  --secondary-foreground: #FFFFFF;
+  --muted: #3D3550;
+  --muted-foreground: #A09AB8;
+  --accent: #0ABF9E;
+  --accent-foreground: #1A1425;
+  --accent-purple: #9716BD;
+  --accent-teal: #0ABF9E;
+  --accent-light-blue: #A6C8FF;
+  --destructive: #F87171;
+  --destructive-foreground: #1A1425;
+  --border: #3D3550;
+  --input: #2D2540;
+  --input-border: #3D3550;
+  --ring: #A6C8FF;
+  --chart-1: #A6C8FF;
+  --chart-2: #9716BD;
+  --chart-3: #0ABF9E;
+  --chart-4: #2A1E91;
+  --chart-5: #F0F3FF;
+  --sidebar: #2D2540;
+  --sidebar-foreground: #F0F3FF;
+  --sidebar-primary: #A6C8FF;
+  --sidebar-primary-foreground: #1A1425;
+  --sidebar-accent: #9716BD;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #3D3550;
+  --sidebar-ring: #A6C8FF;
+}
+
+@theme inline {
+  --font-sans: 'Alexandria', 'Alexandria Fallback', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Alexandria', 'Alexandria Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-border: var(--input-border);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.recharts-legend-item .recharts-surface {
+  border-radius: 100%;
+  margin: 0 6px;
+}

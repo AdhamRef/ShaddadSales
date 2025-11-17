@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  email         String    @unique
+  password      String
+  name          String
+  role          Role      @default(AGENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  dailyInputs   DailyInput[]
+  qualifiedLeads QualifiedLead[]
+
+  @@map("users")
+}
+
+enum Role {
+  ADMIN
+  AGENT
+}
+
+model Cycle {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  month         Int
+  year          Int
+  startDate     DateTime
+  endDate       DateTime
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  dailyInputs   DailyInput[]
+  qualifiedLeads QualifiedLead[]
+  kpiConfig     KPIConfiguration?
+
+  @@map("cycles")
+}
+
+model DailyInput {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  cycleId       String    @db.ObjectId
+  cycle         Cycle     @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  
+  agentId       String    @db.ObjectId
+  agent         User      @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  date          DateTime
+  messagesReceived Int
+  callsDone     Int
+  closings      Int
+  avgResponseTime Float
+  notes         String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("daily_inputs")
+}
+
+model QualifiedLead {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  cycleId       String    @db.ObjectId
+  cycle         Cycle     @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  
+  agentId       String    @db.ObjectId
+  agent         User      @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  
+  leadName      String
+  phoneNumber   String
+  facebookProfile String
+  dateCollected DateTime
+  status        String    @default("Qualified")
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("qualified_leads")
+}
+
+model KPIConfiguration {
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  cycleId       String    @unique @db.ObjectId
+  cycle         Cycle     @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  
+  closingRateWeight Float @default(0.40)
+  callConversionWeight Float @default(0.30)
+  responseTimeWeight Float @default(0.15)
+  qualifiedLeadsWeight Float @default(0.15)
+  
+  closingRateTarget Float @default(0.15)
+  maxClosingRate Float @default(0.30)
+  callConversionTarget Float @default(0.70)
+  qualifiedLeadsTarget Float @default(0.75)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("kpi_configurations")
+}
