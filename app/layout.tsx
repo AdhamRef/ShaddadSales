@@ -11,7 +11,7 @@ const alexandria = Alexandria({
 })
 
 export const metadata: Metadata = {
-  title: 'نظام إدارة أداء المبيعات',
+  title: 'Shaddad Sales Panel',
   description: 'تتبع الأنشطة اليومية وإدارة العملاء المؤهلين ومراقبة درجات KPI لفريق المبيعات الخاص بك',
   generator: 'v0.app',
   icons: {

@@ -1,0 +1,12 @@
+{
+  "/admin/agents/page": "app/admin/agents/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/agent/qualified-leads/page": "app/agent/qualified-leads/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/auth/agents/route": "app/api/auth/agents/route.js",
+  "/api/cycles/route": "app/api/cycles/route.js",
+  "/api/daily-inputs/route": "app/api/daily-inputs/route.js",
+  "/api/qualified-leads/route": "app/api/qualified-leads/route.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/login/page": "app/login/page.js"
+}

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Lock, Mail, ArrowRight, Eye, EyeOff } from 'lucide-react'
+import { Lock, Mail, ArrowRight, Eye, EyeOff, ArrowLeft } from 'lucide-react'
 import { useRouter } from "next/navigation"
 
 export default function LoginPage() {
@@ -224,7 +224,7 @@ export default function LoginPage() {
                 ) : (
                   <div className="flex items-center justify-center gap-2">
                     <span>تسجيل الدخول</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowLeft className="w-4 h-4" />
                   </div>
                 )}
               </Button>
